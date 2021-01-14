@@ -71,6 +71,10 @@ The models I'm going to consider to perform the classification of our documents 
 
 #### - Linear support-vector machine
 
+SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidean space is able to split two classes of a given dataset. By "best" I mean the hyperplane that is able to maximize the distance between the support vectors and the hyperplane itself. The support vectors are the closest points from both classes, closest to the hyperplane. The following picture gives a more clear insight on how the hyperplane is defined, in a very simple case where we just have two explanatory variables and so the hyperplane becomes a line.
+
+SVMs don't support multiclass classification natively, but there are two different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-to-Rest approach that is based on the construction of one hyperplane for each class. Each hyperplane separates the points of a given class from the points of the remaing classes and its construction is equivalent to the two classes case discussed above.
+
 ```python
 
 ```
