@@ -1,9 +1,9 @@
 # Text Multiclass Classification
 
-### Introduction
-The aim of this project is to build a model that is able to assign to a document, based on what it is about, one of the following 9 classes:  Agent, Place, Species, Work, Event, SportsSeason, UnitOfWork , TopicalConcept, Device. The data set used to train and test our models  contains 342,782 wikipedia articles and it can be downloaded [here](https://www.kaggle.com/danofer/dbpedia-classes?select=DBP_wiki_data.csv). 
+## Introduction
+The aim of this project is to build a model that is able to assign to a document, based on what it is about, one of the following 9 classes:  Agent, Place, Species, Work, Event, SportsSeason, UnitOfWork , TopicalConcept, Device. The data set used to train and test our models  contains 342,782 wikipedia articles and it can be downloaded [here](https://www.kaggle.com/danofer/dbpedia-classes?select=DBP_wiki_data.csv). All the models I'm going to use for the classification step require continous explanatory variables, but in this case the only variable that we have at disposal is the text of the document. In order to solve this problem we can represent text or words of each documet as a numerical vector and this technique is called word embedding.
 
-### Data Cleaning
+## Data Cleaning
 
 One import step when we deal with textual data is the data cleaning process, that basically it aims to delete all the elements of a document that are not useful for the analysis. Let's take a look how our documents look with an example:
 
@@ -40,10 +40,18 @@ Now it looks much better and we are done with text pre-processing.
 
 ## Text Classification with TF-IDF
 
+As discussed in the introduction we have to change how the text of the documents is represented. I order to do that we can build numerical vectors of text based on the term frequency–inverse document frequency (TF-IDF). This statistic evaluates how relevant a word is to a document in a collection of documents (corpus). The numeric vectors that represent each document in our corpus are made of the TF-IDF statistics computed for each word and document. Below it is shown how it's done in python
+
 ```python
+count_vect = CountVectorizer()
+X_counts = count_vect.fit_transform(df["text"]) #frequency of each word in the vocabulary for each document
 
+tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 1))
+labels = df.category_id
+tfidf_transformer = TfidfTransformer()
+X_tfidf = tfidf_transformer.fit_transform(X_counts)
 ```
-
+Let's see how this vectorial representation looks for one of our documents
 ```python
 
 ```
