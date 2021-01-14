@@ -55,16 +55,21 @@ Let's see how this vectorial representation looks for one of our documents
 ```python
 
 ```
-The other thing that has to be done before moving on with the classification is to change how the target variable (the classes of our interest) are coded, plus 
-the definition of dictionaries that are going to be exploited later.
+Before moving on with the classification we have to change how the target variable (the classes of our interest) are coded, plus 
+the definition of dictionaries that are going to be exploited later. Finally our data set is split into a train and test set.
 
 ```python
 df['category_id'] = df['l1'].factorize()[0]
 category_id_df = df[['l1', 'category_id']].drop_duplicates().sort_values('category_id')
 category_to_id = dict(category_id_df.values)
 id_to_category = dict(category_id_df[['category_id', 'l1']].values)
+X_train, X_test, y_train, y_test, indices_train, indices_test = train_test_split(X_tfidf, labels, df.index, test_size=0.33, random_state=0)
+
 ```
 
+The models I'm going to consider to perform the classification of our documents are:
+
+#### - Linear support-vector machine
 
 ```python
 
