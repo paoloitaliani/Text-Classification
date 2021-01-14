@@ -12,7 +12,7 @@ One import step when we deal with textual data is the data cleaning process, tha
 'The 1917 Bali earthquake occurred at 06:50 local time on 21 January (23:11 on 20 January UTC). It had an estimated magnitude of 6.6 on the surface wave magnitude scale and had a maximum perceived intensity of IX (Violent) on the Mercalli intensity scale. It caused widespread damage across Bali, particularly in the south of the island. It triggered many landslides, which caused 80% of the 1500 casualties.'
 
 ```
-As we can see our text is full of elements that are not going to improve our classification such as numbers and stopwords. Another good thing to do is to trasform all letters into lowercase, everything can be done by the following clean_text function.
+As we can see our text is full of elements that are not going to improve our classification such as numbers and stopwords. Another good thing to do is to trasform all letters into lowercase and everything can be done by the following code.
 
 ```python
 def clean_text(text):
@@ -27,5 +27,18 @@ def clean_text(text):
 
 df['text'] = df['text'].apply(clean_text)
 df['text'] = df['text'].str.replace('\d+', '')
+
+```
+Let's see how our documents have changed.
+
+```python
+
+```
+
+```python
+
+```
+
+```python
 
 ```
