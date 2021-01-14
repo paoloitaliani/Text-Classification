@@ -32,8 +32,13 @@ df['text'] = df['text'].str.replace('\d+', '')
 Let's see how our documents have changed.
 
 ```python
+>>> df["text"][1]
+' bali earthquake occurred  local time  january   january utc estimated magnitude  surface wave magnitude scale maximum perceived intensity ix violent mercalli intensity scale caused widespread damage across bali particularly south island triggered many landslides caused   casualties'
 
 ```
+Now it looks much better and we are done with text pre-processing.
+
+## Text Classification with TF-IDF
 
 ```python
 
