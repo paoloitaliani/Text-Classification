@@ -55,3 +55,26 @@ Let's see how this vectorial representation looks for one of our documents
 ```python
 
 ```
+The other thing that has to be done before moving on with the classification is to change how the target variable (the classes of our interest) are coded, plus 
+the definition of dictionaries that are going to be exploited later.
+
+```python
+df['category_id'] = df['l1'].factorize()[0]
+category_id_df = df[['l1', 'category_id']].drop_duplicates().sort_values('category_id')
+category_to_id = dict(category_id_df.values)
+id_to_category = dict(category_id_df[['category_id', 'l1']].values)
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+```python
+
+```
