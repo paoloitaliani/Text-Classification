@@ -95,7 +95,7 @@ This model as the previous one is based on finding the class that maximizes the 
 Random forest is an ensamble approach based on grouping weak-learners (decision trees) providing a strong learner that is able to give more stable and accurate predictions. Basically we build a predefined number of trees using for each of them a random subsample of our dataset. At each node m features selected at random are used to perform the binary split that maximizes the homogeneity of the target variable, within the subsets created after the split. Each observation is classified according to the class that gets the most number of votes by the random trees. Below the picture shows the intuition behind this technique.
 
 
-<p align="center"><img src="images/image4.jng" width=400></p>
+<p align="center"><img src="images/image4.jpg" width=600></p>
 ```python
 
 ```
