@@ -72,7 +72,12 @@ I considered different models to perform the classification and a brief explanat
 
 SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidean space is able to split two classes of a given dataset. By "best" I mean the hyperplane that is able to maximize the distance between the support vectors and the hyperplane itself. The support vectors are the closest points from both classes to the hyprplane. The following picture gives a more clear insight on how the hyperplane is defined in a very simple case, where we just have two explanatory variables and the hyperplane is a line.
 
+<p align="center"><img src="images/image1.png" width=400></p>
+
+
 SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaing classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above.
+
+<p align="center"><img src="images/image2.png" width=400></p>
 
 #### Logistic Regression
 
@@ -81,6 +86,7 @@ Logistic regression as SVMs doesn't support multi-class classification natively.
 #### Multinomial Naive Bayes 
 
 This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed that it is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document. Below it is shown how the conditional probability of observing the k-th class, given the term frequencies–inverse document frequencies, is computed.
+
 
 <p align="center"><img src="images/Screen Shot 2021-01-15 at 04.27.06.png" width=300></p>
 
