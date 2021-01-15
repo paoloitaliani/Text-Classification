@@ -80,7 +80,11 @@ Logistic regression as SVMs doesn't support multi-class classification natively.
 
 #### Multinomial Naive Bayes 
 
-This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed that it is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document.
+This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed that it is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document. Below it is shown how the conditional probability of observing the k-th class, given the term frequencies–inverse document frequencies, is computed.
+
+<p align="center"><img src="images/Screen Shot 2021-01-15 at 04.27.06.png" width=300></p>
+
+
 
 ```python
 
