@@ -74,11 +74,14 @@ SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidea
 
 SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaing classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above.
 
-##### Logistic Regression
+#### Logistic Regression
 
 Logistic regression as SVMs doesn't support multi-class classification natively. The One-vs-Rest approach can be again implemented, in this case it is based on training a logistic regression classifier for each class, to compute the conditional probability of belonging to the corresponding class given our data. The observation is then assigned to the class that maximizes this probability.
 
-##### Naive Bayes Classifier
+#### Multinomial Naive Bayes 
+
+This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed that it is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document.
+
 ```python
 
 ```
