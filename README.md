@@ -66,15 +66,19 @@ id_to_category = dict(category_id_df[['category_id', 'l1']].values)
 X_train, X_test, y_train, y_test, indices_train, indices_test = train_test_split(X_tfidf, labels, df.index, test_size=0.33, random_state=0)
 
 ```
+I considered different models to perform the classification and a brief explanation of them is provided below.
 
-The models I'm going to consider to perform the classification of our documents are:
+#### Linear support-vector machine
 
-#### - Linear support-vector machine
+SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidean space is able to split two classes of a given dataset. By "best" I mean the hyperplane that is able to maximize the distance between the support vectors and the hyperplane itself. The support vectors are the closest points from both classes to the hyprplane. The following picture gives a more clear insight on how the hyperplane is defined in a very simple case, where we just have two explanatory variables and the hyperplane is a line.
 
-SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidean space is able to split two classes of a given dataset. By "best" I mean the hyperplane that is able to maximize the distance between the support vectors and the hyperplane itself. The support vectors are the closest points from both classes, closest to the hyperplane. The following picture gives a more clear insight on how the hyperplane is defined, in a very simple case where we just have two explanatory variables and so the hyperplane becomes a line.
+SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaing classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above.
 
-SVMs don't support multiclass classification natively, but there are two different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-to-Rest approach that is based on the construction of one hyperplane for each class. Each hyperplane separates the points of a given class from the points of the remaing classes and its construction is equivalent to the two classes case discussed above.
+##### Logistic Regression
 
+Logistic regression as SVMs doesn't support multi-class classification natively. The One-vs-Rest approach can be again implemented, in this case it is based on training a logistic regression classifier for each class, to compute the conditional probability of belonging to the corresponding class given our data. The observation is then assigned to the class that maximizes this probability.
+
+##### Naive Bayes Classifier
 ```python
 
 ```
