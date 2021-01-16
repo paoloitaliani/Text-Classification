@@ -146,8 +146,18 @@ plt.show()
 <p align="center"><img src="images/image5.png" width=900></p>
 
 As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as agent and the row of actual agent documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
-```python
 
+## Classification with embedding layer and pre-trained word embeddigs
+
+The embedding layer enables us to represent the words of our vocabulary as numerical vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The Embedding layer is the first layer of our neural network and requires inter coded data as input, so each word has to be represented as an integer. For this analysis we want to consider just the 10000 most frequent words in our corpus, so we set num_words=10000
+
+```python
+MAX_NB_WORDS=10000 #number of words cnsidered in tokenizer.texts_to_sequences
+tokenizer = Tokenizer(num_words=MAX_NB_WORDS)
+tokenizer.fit_on_texts(X_train)
+
+X_traintk = tokenizer.texts_to_sequences(X_train)
+X_testtk = tokenizer.texts_to_sequences(X_test)
 ```
 
 
