@@ -170,7 +170,7 @@ X_testtk = tokenizer.texts_to_sequences(X_test)
 ```
 
 
-Now the first document in our data set looks like this
+Now the first document in our data set looks like this. As we can see as the indexing decreases, the frequency of the word in our corpus increses
 
 ```python
 >>> print(X_train[0])
@@ -180,7 +180,29 @@ Now the first document in our data set looks like this
 
 ```
 
+The documents have different lengths so in order to have vectors of the same length we use pad_sequences(). We also fix a max length for the documents equal to 100.
+
+
 ```python
+
+maxlen = 100
+
+X_traintk = pad_sequences(X_traintk, padding='post', maxlen=maxlen)
+X_testtk = pad_sequences(X_testtk, padding='post', maxlen=maxlen)
+
+```
+
+Now the above document looks like this
+```python
+>>> print(X_traintk[0])
+[  47 1344  326   23 3806  601 2325 2527  653  361 2389  249 3806  953
+ 3748 7160  742 1928   23  326  987   19  441 1656  142  403  282  270
+ 1198  551 1198 3806  140 3806  488  326   23  545 2142   38  394   21
+    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+    0    0]
 
 ```
 
@@ -188,3 +210,25 @@ Now the first document in our data set looks like this
 
 ```
 
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+```python
+
+```
