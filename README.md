@@ -96,10 +96,38 @@ Random forest is an ensamble approach based on grouping weak-learners (decision 
 
 
 <p align="center"><img src="images/image4.jpg" width=600></p>
+
+In this case I set a maximum depth of the trees equal to five, meaning that the length of the longest path from a root to a leaf is five and I considered 100 trees in the forest.
+
+
 ```python
+models = [
+    RandomForestClassifier(n_estimators=100, max_depth=5, random_state=0),
+    LinearSVC(),
+    MultinomialNB(),
+    LogisticRegression(random_state=0, multi_class="ovr")
+]
 
+cv_df = pd.DataFrame(index=range(len(models)))
+entries = []
+for model in models:
+  model.fit(X_train, y_train)
+  model_name = model.__class__.__name__
+  y_pred = model.predict(X_test)
+  accuracy = accuracy_score(y_test, y_pred)
+  entries.append((model_name, accuracy))
+cv_df = pd.DataFrame(entries, columns=['model_name', 'accuracy'])
 ```
+The results of the analysis are show below
 
+| Model  | Accuracy |
+| ------------- | ------------- |
+| LinearSVC  | 0.981  |
+| LogisticRegression  | 0.973  |
+| MultinomialNB | 0.782  |
+| RandomForestClassifier  | 0.514 |
+
+As we can see the best result in terms of accuracy is given by LinearSVC. Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.
 
 ```python
 
