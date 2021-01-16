@@ -108,7 +108,7 @@ models = [
     LogisticRegression(random_state=0, multi_class="ovr")
 ]
 
-cv_df = pd.DataFrame(index=range(len(models)))
+
 entries = []
 for model in models:
   model.fit(X_train, y_train)
@@ -116,7 +116,7 @@ for model in models:
   y_pred = model.predict(X_test)
   accuracy = accuracy_score(y_test, y_pred)
   entries.append((model_name, accuracy))
-cv_df = pd.DataFrame(entries, columns=['model_name', 'accuracy'])
+
 ```
 The results of the analysis are show below
 
@@ -127,7 +127,27 @@ The results of the analysis are show below
 | MultinomialNB | 0.782  |
 | RandomForestClassifier  | 0.514 |
 
-As we can see the best result in terms of accuracy is given by LinearSVC. Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.
+As we can see the best result in terms of accuracy is given by LinearSVC, also LogisticRegression performs really well and it is interesting how such simple models that are so inexpensive to train are able to predict our target variable so easily.  Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.  
+
+Let's now try to get more insights by looking at the confusion matrix produced bt the linear SVM model
+
+```python
+model=LinearSVC()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+conf_mat = confusion_matrix(y_test, y_pred)
+fig, ax = plt.subplots(figsize=(10,10))
+sns.heatmap(conf_mat, annot=True, fmt='d',xticklabels=category_id_df.l1.values, yticklabels=category_id_df.l1.values,cmap="Blues")
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.gcf().subplots_adjust(bottom=0.30)
+plt.show()
+```
+
+```python
+
+```
+
 
 ```python
 
@@ -136,3 +156,12 @@ As we can see the best result in terms of accuracy is given by LinearSVC. Surpri
 ```python
 
 ```
+
+```python
+
+```
+
+```python
+
+```
+
