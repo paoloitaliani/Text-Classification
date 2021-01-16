@@ -145,7 +145,7 @@ plt.show()
 ```
 <p align="center"><img src="images/image5.png" width=900></p>
 
-
+As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as agent and the row of actual agent documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
 ```python
 
 ```
