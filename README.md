@@ -170,7 +170,7 @@ X_testtk = tokenizer.texts_to_sequences(X_test)
 ```
 
 
-Now the first document in our data set looks like this. As we can see as the indexing decreases, the frequency of the word in our corpus increses
+Now the first document in our data set looks like this. As we can see as the indexing decreases, the frequency of the word in our corpus increases.
 
 ```python
 >>> print(X_train[0])
@@ -192,7 +192,7 @@ X_testtk = pad_sequences(X_testtk, padding='post', maxlen=maxlen)
 
 ```
 
-Now the above document looks like this
+Now the previous document looks like this.
 ```python
 >>> print(X_traintk[0])
 [  47 1344  326   23 3806  601 2325 2527  653  361 2389  249 3806  953
@@ -205,6 +205,8 @@ Now the above document looks like this
     0    0]
 
 ```
+
+Now we are ready to define our model. The first layer as said before is the embedding layer and we have to specify our vacabulary size (10000), length of each document (100) and number of dimensions of the embedding space where each word is mapped to (50). The output of the embedding layer is going to be 100 vectors of 50 dimensios each, so if we want to plug it directly to the dense vector we need to flatten it to a single 5000 dimensions vector. 
 
 ```python
 
