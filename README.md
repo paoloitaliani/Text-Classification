@@ -149,7 +149,16 @@ As we can see a great proportion of the observations is in the main diagonal of 
 
 ## Classification with embedding layer and pre-trained word embeddigs
 
-The embedding layer enables us to represent the words of our vocabulary as numerical vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The Embedding layer is the first layer of our neural network and requires inter coded data as input, so each word has to be represented as an integer. For this analysis we want to consider just the 10000 most frequent words in our corpus, so we set num_words=10000
+The embedding layer enables us to represent the words of our vocabulary as numerical vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires that the target variables has to be represented using one-hot encoding and again we split our data between train and test set.
+
+
+```python
+Y = pd.get_dummies(df['l1']).values
+X_train, X_test, y_train, y_test = train_test_split(df['text'], Y,test_size=0.33, random_state = 0)
+
+```
+
+The Embedding layer is the first layer of our neural network and requires integer coded data as input, so each word has to be represented as an integer. For this analysis we want to consider just the 10000 most frequent words in our corpus, so we set num_words=10000
 
 ```python
 MAX_NB_WORDS=10000 #number of words cnsidered in tokenizer.texts_to_sequences
@@ -161,11 +170,13 @@ X_testtk = tokenizer.texts_to_sequences(X_test)
 ```
 
 
-```python
-
-```
+Now the first document in our data set looks like this
 
 ```python
+>>> print(X_train[0])
+ mindoro earthquake occurred november   local time near mindoro philippines moment magnitude  associated  kilometerlong ground rupture called aglubang river fault seventy eight people reported dead   houses damaged earthquake generated tsunami landslides verde island
+>>> print(X_traintk[0])
+[47, 1344, 326, 23, 3806, 601, 2325, 2527, 653, 361, 2389, 249, 3806, 953, 3748, 7160, 742, 1928, 23, 326, 987, 19, 441, 1656, 142, 403, 282, 270, 1198, 551, 1198, 3806, 140, 3806, 488, 326, 23, 545, 2142, 38, 394, 21]
 
 ```
 
