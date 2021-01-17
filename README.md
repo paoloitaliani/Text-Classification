@@ -214,6 +214,9 @@ Now we are ready to define our model.
 
 - Loss function: Given that we have a multi-class classification problem we consider a Categorical Cross-Entropy loss that is defined in this way.
 
+<p href="https://www.codecogs.com/eqnedit.php?latex=CE&space;=&space;-\sum_{i}^{C}t_{i}&space;log&space;(s_{i})" target="_blank" align="center"><img src="https://latex.codecogs.com/gif.latex?CE&space;=&space;-\sum_{i}^{C}t_{i}&space;log&space;(s_{i})" title="CE = -\sum_{i}^{C}t_{i} log (s_{i})" /></p>
+
+
 - Batch size: for this analysis I used the mini-batch gradient descent that splits the training set into batches (containing 64 documents in this case). Each batch is used to compute the gradient, so the weights are updated every time a batch is passed through the neural network.
 
 - Epochs: I decided to use a small number of epochs (20), given the fact that I am using mini-batch gradient descent and in each epoch the weights are updated a lot of times, so it takes few epochs to converge.
