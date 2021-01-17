@@ -206,20 +206,32 @@ Now the previous document looks like this.
 
 ```
 
-Now we are ready to define our model. The first layer as said before is the embedding layer and we have to specify our vacabulary size (10000), length of each document (100) and number of dimensions of the embedding space where each word is mapped to (50). The output of the embedding layer is going to be 100 vectors of 50 dimensios each, so if we want to plug it directly to the dense vector we need to flatten it to a single 5000 dimensions vector. 
+Now we are ready to define our model. The first layer as said before is the embedding layer and we have to specify our vacabulary size (10000), length of each document (100) and number of dimensions of the embedding space where each word is mapped to (50). The output of the embedding layer is going to be 100 vectors of 50 dimensios each, so if we want to plug it directly into the dense layer we need to flatten it to a single 5000 dimensions vector. The dense layer is also the output layer and has 9 nodes, one for each class that we want to predict. Given the fact that the classes are mutually exclusive we can use the softmax activation function. This fuction outputs a vector of numbers that take vlaues between o and 1 and add up to one, so they can be interpreted as probabilities.
 
 ```python
+EMBEDDING_DIM=50
+model = Sequential()
+model.add(Embedding(MAX_NB_WORDS, EMBEDDING_DIM, input_length=maxlen))
+model.add(Flatten())
+model.add(Dense(9, activation='softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 ```
+Below it is shown how the output from the output layer looks for a given document
 
 ```python
-
+>>> model.predict(X_testtk[45:46])
+array([[0.9372179 , 0.00156908, 0.03411338, 0.00319328, 0.00143703,
+        0.00519146, 0.0081101 , 0.00261615, 0.00655169]], dtype=float32)
 ```
-
+As we can see the first element of the vector has the highest value, so the document is going to be classified to the first class. 
 
 ```python
-
+>>> y_test[45:46]
+array([[1, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 ```
+
+We can see that the prediction is correct.
 
 
 ```python
