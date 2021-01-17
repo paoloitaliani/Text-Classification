@@ -206,7 +206,7 @@ Now the previous document looks like this.
 
 ```
 
-Now we are ready to define our model. The first layer as said before is the embedding layer and we have to specify our vacabulary size (10000), length of each document (100) and number of dimensions of the embedding space where each word is mapped to (50). The output of the embedding layer is going to be 100 vectors of 50 dimensios each, so if we want to plug it directly into the dense layer we need to flatten it to a single 5000 dimensions vector. The dense layer is also the output layer and has 9 nodes, one for each class that we want to predict. Given the fact that the classes are mutually exclusive we can use the softmax activation function. This fuction outputs a vector of numbers that take vlaues between o and 1 and add up to one, so they can be interpreted as probabilities.
+Now we are ready to define our model. The first layer as said before is the embedding layer and we have to specify our vacabulary size (10000), length of each document (100) and number of dimensions of the embedding space where each word is mapped to (50). The output of the embedding layer is going to be 100 vectors of 50 dimensios each, so if we want to plug it directly into the dense layer we need to flatten it to a single 5000 dimensions vector. The dense layer is also the output layer and has 9 nodes, one for each class that we want to predict. Given the fact that the classes are mutually exclusive we can use the softmax activation function, that is going to be applied to the vector s that gathers the 9 output nodes. This function squashes the vector s in the range (0, 1) and all the resulting elements add up to 1. 
 
 ```python
 EMBEDDING_DIM=50
@@ -233,7 +233,7 @@ array([[1, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 
 We can see that the prediction is correct.
 
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=CE&space;=&space;-\sum_{i}^{C}t_{i}&space;log&space;(s_{i})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?CE&space;=&space;-\sum_{i}^{C}t_{i}&space;log&space;(s_{i})" title="CE = -\sum_{i}^{C}t_{i} log (s_{i})" /></a>
 ```python
 
 ```
