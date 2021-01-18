@@ -248,22 +248,48 @@ array([[1, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 We can see that the prediction is correct. 
 
 
-| loss  | Accuracy |
+|Set| loss  | Accuracy |
 | ------------- | ------------- |
-| LinearSVC  | 0.981  |
+| Training set  | 0.981  |
+| Test set | |
 
 As we can see the model makes very accurate predictions, but still it is worse compared to linear SVM.
 
 
 
-## Classification with Pre-traied Word Embeddings
+## Classification with Pre-trained Word Embeddings
 
+Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
+When we built the embeddig layer in the previous paragraph, its weights were randomly initialized. One thing we can do is to use the pretrained word embeddings learned in a large data set instead of the randomly initialized ones. I used Stanford's  GloVe pre-trained word embeddings that can be downloaded [here](https://nlp.stanford.edu/projects/glove/). 
 
+Uploading the embedding matrix for the 10000 words that are considered in our analysis.
 ```python
+def create_embedding_matrix(filepath, word_index, embedding_dim):
+    vocab_size = len(word_index) + 1  # Adding again 1 because of reserved 0 index
+    embedding_matrix = np.zeros((vocab_size, embedding_dim))
+
+    with open(filepath) as f:
+        for line in f:
+            word, *vector = line.split()
+            if word in word_index:
+                idx = word_index[word]
+                embedding_matrix[idx] = np.array(
+                    vector, dtype=np.float32)[:embedding_dim]
+
+    return embedding_matrix
+
+EMBEDDING_DIM=50
+embedding_matrix = create_embedding_matrix('/Users/Niolo/Documents/python/data/glove.6B.50d.txt',mostfreq_idx, embedding_dim=50)
 
 ```
+The code that enables to contruct our model is identical to the one of the previous paragraph, we just have to specify the weights that are contained in the embeddig matrix when define the embedding layer.
 
 
+
+|Set| loss  | Accuracy |
+| ------------- | ------------- |
+| Training set  | 0.9929  |
+| Test set | 0.9736 |
 ```python
 
 ```
