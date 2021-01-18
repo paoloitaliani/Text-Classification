@@ -259,8 +259,8 @@ We can see that the prediction is correct.
 
 | Set | loss  | Accuracy |
 | ------------- | ------------- | ------------- |
-| Training set | 0.0237 | 0.9929 |
-| Test set | 0.1090 | 0.9736 |
+| Training set | 0.0113 | 0.9974 |
+| Test set | 0.0731 | 0.9780 |
 
 As we can see the model makes very accurate predictions, but still it is worse compared to linear SVM.
 
