@@ -3,7 +3,9 @@
 ## Introduction
 The aim of this project is to build a model that is able to assign to a document, based on what it is about, one of the following 9 classes:  Agent, Place, Species, Work, Event, SportsSeason, UnitOfWork , TopicalConcept, Device. The data set used to train and test our models  contains 342,782 wikipedia articles and it can be downloaded [here](https://www.kaggle.com/danofer/dbpedia-classes?select=DBP_wiki_data.csv). All the models I'm going to use for the classification step require continous explanatory variables, but in this case the only variable that we have at disposal is the text of the document. In order to solve this problem we can represent text or words of each documet as a numerical vector and this technique is called word embedding. Let's see how our target value is distributed.
 
+<p align="center"><img src="images/image6.png" width=700></p>
 
+We are in the case of an unbalanced data set, meaning that we have an unequal distribution of our classes. This might be a problem for our models, so we have to keep in mind this fact if we spot something strange in our classification.
 
 ## Data Cleaning
 
@@ -255,10 +257,10 @@ array([[1, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 We can see that the prediction is correct. 
 
 
-|Set| loss  | Accuracy |
-| ------------- | ------------- |
-| Training set  | 0.981  |
-| Test set | |
+| Set | loss  | Accuracy |
+| ------------- | ------------- | ------------- |
+| Training set | 0.0237 | 0.9929 |
+| Test set | 0.1090 | 0.9736 |
 
 As we can see the model makes very accurate predictions, but still it is worse compared to linear SVM.
 
