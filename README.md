@@ -9,7 +9,7 @@ We are in the case of an unbalanced data set, meaning that we have an unequal di
 
 ## Data Cleaning
 
-One import step when we deal with textual data is the data cleaning process, that basically it aims to delete all the elements of a document that are not useful for the analysis. Let's take a look how our documents look with an example:
+One important step when we deal with textual data is the data cleaning process, basically it aims to delete all the elements of a document that are not useful for the analysis. Let's take a look how our documents look with an example:
 
 ```python
 >>> df["text"][1]
@@ -45,11 +45,7 @@ Now it looks much better and we are done with text pre-processing.
 
 ## Text Classification with TF-IDF
 
-
-
-
-
-As discussed in the introduction we have to change how the text of the documents is represented. I order to do that we can build numerical vectors of text based on the term frequency–inverse document frequency (TF-IDF). This statistic evaluates how relevant a word is to a document in a collection of documents (corpus). The numeric vectors that represent each document in our corpus are made of the TF-IDF statistics computed for each word and document. Below it is shown how it's done in python
+As discussed in the introduction we have to change how the text of the documents is represented. In order to do so we can build vectors based on the term frequency–inverse document frequency (TF-IDF). This statistic evaluates how relevant a word is to a document in a collection of documents (corpus). The numeric vectors that represent each document in our corpus are made of the TF-IDF statistics computed for each word and document. Below it is shown how it's done in python
 
 ```python
 count_vect = CountVectorizer()
@@ -60,10 +56,7 @@ labels = df.category_id
 tfidf_transformer = TfidfTransformer()
 X_tfidf = tfidf_transformer.fit_transform(X_counts)
 ```
-Let's see how this vectorial representation looks for one of our documents
-```python
 
-```
 Before moving on with the classification we have to change how the target variable (the classes of our interest) are coded, plus 
 the definition of dictionaries that are going to be exploited later. Finally our data set is split into a train and test set.
 
@@ -84,29 +77,29 @@ SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidea
 <p align="center"><img src="images/image1.png" width=400></p>
 
 
-SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaing classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above. The picture below shows a graphical representation of the hyperplanes in the case where we have only two explanatory variables
+SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaining classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above. The picture below shows a graphical representation of the hyperplanes in the case where we have only two explanatory variables
 
 <p align="center"><img src="images/image2.png" width=400></p>
 
 #### Logistic Regression
 
-Logistic regression as SVMs doesn't support multi-class classification natively. The One-vs-Rest approach can be again implemented, in this case it is based on training a logistic regression classifier for each class, to compute the conditional probability of belonging to the corresponding class given our data. The observation is then assigned to the class that maximizes this probability.
+Logistic regression as SVMs doesn't support multi-class classification natively. The One-vs-Rest approach can be again implemented, in this case it is based on training a logistic regression classifier for each class and then compute the conditional probability of belonging to the corresponding class given our data. The observation is then assigned to the class that maximizes this probability.
 
 #### Multinomial Naive Bayes 
 
-This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed that it is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document. Below it is shown how the conditional probability of observing the k-th class, given the term frequencies–inverse document frequencies, is computed.
+This model as the previous one is based on finding the class that maximizes the conditional probability of belongig to it given our data. The difference originates from how this probability is computed. Its computation is based on the bayes theorem and on the conditional indipendence between the feautures, that in our case are represented by the term frequencies–inverse document frequencies of words in each document. Below it is shown how the conditional probability of observing the k-th class, given the term frequencies–inverse document frequencies, is computed.
 
 
 <p align="center"><img src="images/Screen Shot 2021-01-15 at 04.27.06.png" width=300></p>
 
 #### Random Forest
 
-Random forest is an ensamble approach based on grouping weak-learners (decision trees) providing a strong learner that is able to give more stable and accurate predictions. Basically we build a predefined number of trees using for each of them a random subsample of our dataset. At each node m features selected at random are used to perform the binary split that maximizes the homogeneity of the target variable, within the subsets created after the split. Each observation is classified according to the class that gets the most number of votes by the random trees. Below the picture shows the intuition behind this technique.
+Random forest is an ensamble approach based on grouping weak-learners (decision trees) providing a strong learner that is able to give more stable and accurate predictions. Basically we build a predefined number of trees considering for each of them a random subsample of our dataset. At each node m features selected at random are used to perform the binary split that maximizes the homogeneity of the target variable within the subsets created after the split. Each observation is classified according to the class that obtains the most number of votes by the random trees. The picture below shows the intuition behind this technique.
 
 
 <p align="center"><img src="images/image4.jpg" width=600></p>
 
-In this case I set a maximum depth of the trees equal to five, meaning that the length of the longest path from a root to a leaf is five and I considered 100 trees in the forest.
+In this case I set a maximum depth of the trees equal to five, meaning that the length of the longest path from a root to a leaf is five and considered 100 trees
 
 
 ```python
@@ -136,7 +129,7 @@ The results of the analysis are show below
 | MultinomialNB | 0.782  |
 | RandomForestClassifier  | 0.514 |
 
-As we can see the best result in terms of accuracy is given by LinearSVC, also LogisticRegression performs really well and it is interesting how such simple models that are so inexpensive to train are able to predict our target variable so easily.  Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.  
+As we can see the best result in terms of accuracy is given by LinearSVC, also LogisticRegression performs really well and it is interesting how such simple models that are so inexpensive to train are able to predict our target variable so easily. Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.  
 
 Let's now try to get more insights by looking at the confusion matrix produced bt the linear SVM model
 
@@ -154,11 +147,11 @@ plt.show()
 ```
 <p align="center"><img src="images/image5.png" width=900></p>
 
-As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as agent and the row of actual agent documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
+As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as "agent" and the row of actual "agent" documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
 
 ## Classification with embedding layer 
 
-The embedding layer enables us to represent the words of our vocabulary as numerical vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires that the target variables has to be represented using one-hot encoding and again we split our data between train and test set.
+The embedding layer enables us to represent the words of our vocabulary as vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires the target variables to be represented using one-hot encoding and again we split our data between train and test set.
 
 
 ```python
