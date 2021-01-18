@@ -1,7 +1,9 @@
 # Text Multiclass Classification
 
 ## Introduction
-The aim of this project is to build a model that is able to assign to a document, based on what it is about, one of the following 9 classes:  Agent, Place, Species, Work, Event, SportsSeason, UnitOfWork , TopicalConcept, Device. The data set used to train and test our models  contains 342,782 wikipedia articles and it can be downloaded [here](https://www.kaggle.com/danofer/dbpedia-classes?select=DBP_wiki_data.csv). All the models I'm going to use for the classification step require continous explanatory variables, but in this case the only variable that we have at disposal is the text of the document. In order to solve this problem we can represent text or words of each documet as a numerical vector and this technique is called word embedding.
+The aim of this project is to build a model that is able to assign to a document, based on what it is about, one of the following 9 classes:  Agent, Place, Species, Work, Event, SportsSeason, UnitOfWork , TopicalConcept, Device. The data set used to train and test our models  contains 342,782 wikipedia articles and it can be downloaded [here](https://www.kaggle.com/danofer/dbpedia-classes?select=DBP_wiki_data.csv). All the models I'm going to use for the classification step require continous explanatory variables, but in this case the only variable that we have at disposal is the text of the document. In order to solve this problem we can represent text or words of each documet as a numerical vector and this technique is called word embedding. Let's see how our target value is distributed.
+
+
 
 ## Data Cleaning
 
@@ -38,7 +40,12 @@ Let's see how our documents have changed.
 ```
 Now it looks much better and we are done with text pre-processing.
 
+
 ## Text Classification with TF-IDF
+
+
+
+
 
 As discussed in the introduction we have to change how the text of the documents is represented. I order to do that we can build numerical vectors of text based on the term frequency–inverse document frequency (TF-IDF). This statistic evaluates how relevant a word is to a document in a collection of documents (corpus). The numeric vectors that represent each document in our corpus are made of the TF-IDF statistics computed for each word and document. Below it is shown how it's done in python
 
@@ -286,10 +293,10 @@ The code that enables to contruct our model is identical to the one of the previ
 
 
 
-|Set| loss  | Accuracy |
-| ------------- | ------------- |
-| Training set  | 0.9929  |
-| Test set | 0.9736 |
+| Set | loss  | Accuracy |
+| ------------- | ------------- | ------------- |
+| Training set | 0.0237 | 0.9929 |
+| Test set | 0.1090 | 0.9736 |
 ```python
 
 ```
