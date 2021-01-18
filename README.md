@@ -147,7 +147,7 @@ plt.show()
 
 As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as agent and the row of actual agent documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
 
-## Classification with embedding layer and pre-trained word embeddigs
+## Classification with embedding layer 
 
 The embedding layer enables us to represent the words of our vocabulary as numerical vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires that the target variables has to be represented using one-hot encoding and again we split our data between train and test set.
 
@@ -219,7 +219,7 @@ Now we are ready to define our model.
 
 - Batch size: for this analysis I used the mini-batch gradient descent that splits the training set into batches (containing 64 documents in this case). Each batch is used to compute the gradient, so the weights are updated every time a batch is passed through the neural network.
 
-- Epochs: I decided to use a small number of epochs (20), given the fact that I am using mini-batch gradient descent and in each epoch the weights are updated a lot of times, so it takes few epochs to converge.
+- Epochs: I decided to use a small number of epochs (2), given the fact that I am using mini-batch gradient descent and in each epoch the weights are updated a lot of times, so it takes few epochs to converge. When I tried to use more epochs the validation loss started to increase so the model was basically overfitting.
 
 
 ```python
@@ -245,8 +245,18 @@ As we can see the first element of the vector has the highest value, so the docu
 array([[1, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)
 ```
 
-We can see that the prediction is correct.
+We can see that the prediction is correct. 
 
+
+| loss  | Accuracy |
+| ------------- | ------------- |
+| LinearSVC  | 0.981  |
+
+As we can see the model makes very accurate predictions, but still it is worse compared to linear SVM.
+
+
+
+## Classification with Pre-traied Word Embeddings
 
 
 ```python
