@@ -43,7 +43,7 @@ Let's see how our documents have changed.
 Now it looks much better and we are done with text pre-processing.
 
 
-## Text Classification with TF-IDF
+## 1. Text Classification with TF-IDF
 
 As discussed in the introduction we have to change how the text of the documents is represented. In order to do so we can build vectors based on the term frequency–inverse document frequency (TF-IDF). This statistic evaluates how relevant a word is to a document in a collection of documents (corpus). The numeric vectors that represent each document in our corpus are made of the TF-IDF statistics computed for each word and document. Below it is shown how it's done in python
 
@@ -149,7 +149,7 @@ plt.show()
 
 As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as "agent" and the row of actual "agent" documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
 
-## Classification with embedding layer 
+## 2.1 Classification with embedding layer 
 
 The embedding layer enables us to represent the words of our vocabulary as vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires the target variables to be represented using one-hot encoding and again we split our data between train and test set.
 
@@ -259,7 +259,7 @@ As we can see the model makes very accurate predictions, but still it is worse c
 
 
 
-## Classification with Pre-trained Word Embeddings
+## 2.2 Classification with Pre-trained Word Embeddings
 
 Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
 When we built the embeddig layer in the previous paragraph, its weights were randomly initialized. One thing we can do is to use the pretrained word embeddings learned in a large data set instead of the randomly initialized ones. I used Stanford's  GloVe pre-trained word embeddings that can be downloaded [here](https://nlp.stanford.edu/projects/glove/). 
