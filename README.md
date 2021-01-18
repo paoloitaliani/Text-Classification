@@ -299,10 +299,7 @@ The code that enables to contruct our model is identical to the one of the previ
 | ------------- | ------------- | ------------- |
 | Training set | 0.0237 | 0.9929 |
 | Test set | 0.1090 | 0.9736 |
-```python
 
-```
+## Conclusions
 
-```python
-
-```
+We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes. There is still margin of improvement, for example I could have used recurrent neural networks, but in this case I don't see the point of introducing such complex models. 
