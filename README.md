@@ -291,7 +291,7 @@ EMBEDDING_DIM=50
 embedding_matrix = create_embedding_matrix('/Users/Niolo/Documents/python/data/glove.6B.50d.txt',mostfreq_idx, embedding_dim=50)
 
 ```
-The code that enables to contruct our model is identical to the one of the previous paragraph, we just have to specify the weights that are contained in the embeddig matrix when define the embedding layer.
+The code that enables to contruct our model is identical to the one of the previous paragraph, we just have to specify the weights that are contained in the embeddig matrix when define the embedding layer. The table below shows the results.
 
 
 
@@ -299,6 +299,8 @@ The code that enables to contruct our model is identical to the one of the previ
 | ------------- | ------------- | ------------- |
 | Training set | 0.0237 | 0.9929 |
 | Test set | 0.1090 | 0.9736 |
+
+Unfortunatly providing a smart initialization of our model didn't helped with improving our result.
 
 ## Conclusions
 
