@@ -7,6 +7,7 @@
 - [TF-IDF](#1-tf-idf)
 - [Embedding layer and ANNs](#21-embedding-layer-and-anns)
 - [Embedding layer and RNNs (LSTM)](#22-embedding-layer-and-rnns-lstm)
+- [Pre-trained Word Embeddings)](#23-pre-trained-word-embeddings)
 
 
 ## Introduction
