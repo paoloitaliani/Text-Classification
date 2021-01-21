@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [Data Cleaning](#data-Cleaning)
-- [TF-IDF](#1.-tf-idf)
+- [TF-IDF](#1-tf-idf)
 
 
 
