@@ -294,8 +294,14 @@ model.add(Dense(9, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 ```
 
-The only difference from the previous model is the fact that I added the LSTM "layer" and increased the number of epochs to 5, because it seems to take more time to converge.
+The only difference from the previous model is the fact that I added the LSTM "layer" and increased the number of epochs to 5, because it seems to take more time to converge. Below you can find the results.
 
+| Set | loss  | Accuracy |
+| ------------- | ------------- | ------------- |
+| Training set | 0.0097 | 0.9982 |
+| Test set | 0.0694 | 0.9823 |
+
+As we can see we got the best model so far but at a big expense, the model takes a lot more time to train with respect to the ones seen until now.
 ## 2.3 Pre-trained Word Embeddings
 
 Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
@@ -334,4 +340,4 @@ Unfortunatly providing a smart initialization of our model didn't helped with im
 
 ## Conclusions
 
-We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes.
+We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes. The best result is given by the addition of the LSTM layer to our neural network, but the slightly advantage in terms of accuracy comes at the cost of its computational expensiveness. 
