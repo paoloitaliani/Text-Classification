@@ -334,4 +334,4 @@ Unfortunatly providing a smart initialization of our model didn't helped with im
 
 ## Conclusions
 
-We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes. There is still margin of improvement, for example I could have used recurrent neural networks, but in this case I don't see the point of introducing such complex models. 
+We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes.
