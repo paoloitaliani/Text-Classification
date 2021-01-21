@@ -272,9 +272,27 @@ Now that we have defined the LSTM architecture we can implement it in our model.
 
 <p align="center"><img src="images/image7.png" width=600></p>
 
+The following code produces this desired model.
+
+```python
+EMBEDDING_DIM=50
+
+model = Sequential()
+model.add(Embedding(MAX_NB_WORDS, EMBEDDING_DIM, input_length=maxlen))
+model.add(LSTM(100))
+model.add(Dense(9, activation='softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
+epochs = 5
+batch_size = 64
 
+history = model.fit(X_traintk, y_train, epochs=epochs, batch_size=batch_size,validation_data=(X_testtk, y_test))
+
+
+```
+
+As we can see I just added the LSTM "layer" and increased the number of epochs to 5, because it seems to take more time to converge.
 ## 2.3 Pre-trained Word Embeddings
 
 Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
