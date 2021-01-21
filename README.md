@@ -261,6 +261,8 @@ As we can see the model makes very accurate predictions, but still it is worse c
 
 We can improve the previous model by trying to add context to word vectors and this can be done by using recurrent neural networks. Traditional neural networks all inputs as independent, but this doesn’t make much sense if those inputs represent words in a document. RNNs are able to connect previous information to the present task. The traditional RNNs however aren’t able to handle long-term dependencies, so when gap between the relevant information and the point where it is needed is large. Long Short Term Memory networks (LSTM) are a special case of RNNs that are able to handle long-term dependencies. One import element is the cell state that represents the memory of the LSTM and can be updated by forgetting or adding information. As all RNNs they have a chain structure of repeating modules. Each module has 4 interacting neural network layers and can splitted into 3 gates:
 
+<p align="center"><img src="images/image7.png" width=600></p>
+
 
 -	Forget gate: controls which information to discard from the cell state
 -	Input gate: decides which values we’ll update and creates a vector of new candidate values, this is creates an update of the cell state
