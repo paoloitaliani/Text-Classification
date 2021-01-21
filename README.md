@@ -149,7 +149,7 @@ plt.show()
 
 As we can see a great proportion of the observations is in the main diagonal of the confusion matrix, meaning that they are correctly classified. We can notice also that most of the documents that are misclassified come from the column of predicted documents as "agent" and the row of actual "agent" documents. The pattern that can be spotted in this column can be explained by the fact that we have an imbalanced data set, most of our documents are labeled as agent, so the model tends to be attracted by this class when making predictions even if an a mild way. 
 
-## 2.1 Embedding layer 
+## 2.1 Embedding layer and ANNs
 
 The embedding layer enables us to represent the words of our vocabulary as vectors. It is an improvement of representing each word using one-hot encoding because it produces dense low-dimensional vectors. Another interesting feature is that this word embeddings are not fixed as in the one-hot encoding case, in fact they are uptaded while training the neural network, that in this case deals with a classification problem. The neural network requires the target variables to be represented using one-hot encoding and again we split our data between train and test set.
 
@@ -257,9 +257,22 @@ We can see that the prediction is correct.
 
 As we can see the model makes very accurate predictions, but still it is worse compared to linear SVM.
 
+## 2.2 Embedding layer and RNNs (LSTM)
+
+We can improve the previous model by trying to add context to word vectors and this can be done by using recurrent neural networks. Traditional neural networks all inputs as independent, but this doesn’t make much sense if those inputs represent words in a document. RNNs are able to connect previous information to the present task. The traditional RNNs however aren’t able to handle long-term dependencies, so when gap between the relevant information and the point where it is needed is large. Long Short Term Memory networks (LSTM) are a special case of RNNs that are able to handle long-term dependencies. One import element is the cell state that represents the memory of the LSTM and can be updated by forgetting or adding information. As all RNNs they have a chain structure of repeating modules. Each module has 4 interacting neural network layers and can splitted into 3 gates:
 
 
-## 2.2 Pre-trained Word Embeddings
+-	Forget gate: controls which information to discard from the cell state
+-	Input gate: decides which values we’ll update and creates a vector of new candidate values, this is creates an update of the cell state
+-	Output gate: decides what we’re going to output based on a filtered version of the cell state.
+Now that we have defined the LSTM architecture we can implement it in our model. An important parameter that we have to specify is the number of modules in each LSTM cell, in this case I opted for 100. To better understand what I am talking about I find the following picture useful, where each circle represents a module as defined before. 
+
+
+
+
+
+
+## 2.3 Pre-trained Word Embeddings
 
 Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
 When we built the embeddig layer in the previous paragraph, its weights were randomly initialized. One thing we can do is to use the pretrained word embeddings learned in a large data set instead of the randomly initialized ones. I used Stanford's  GloVe pre-trained word embeddings that can be downloaded [here](https://nlp.stanford.edu/projects/glove/). 
