@@ -134,10 +134,10 @@ The results of the analysis are shown below
 
 | Model  | Accuracy |
 | ------------- | ------------- |
-| LinearSVC  | 0.981  |
-| LogisticRegression  | 0.973  |
-| MultinomialNB | 0.782  |
-| RandomForestClassifier  | 0.514 |
+| Linear SVM  | 0.981  |
+| Logistic Regression  | 0.973  |
+| Multinomial NB | 0.782  |
+| Random Forest   | 0.514 |
 
 As we can see the best result in terms of accuracy is given by LinearSVC, also LogisticRegression performs really well and it is interesting how such simple models that are so inexpensive to train are able to predict our target variable so easily. Surprisingly RandomForestClassifier performs poorly, probably we can improve this model by changing its hyperparameters, but I don't think we are able to produce a nice result as the ones given by LogisticRegression  and LinearSVC.  
 
