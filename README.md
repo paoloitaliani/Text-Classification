@@ -87,7 +87,7 @@ SVMs are based on finding the "best" hyperplane that in a n-dimensional euclidea
 <p align="center"><img src="images/image1.png" width=400></p>
 
 
-SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaining classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above. The picture below shows a graphical representation of the hyperplanes in the case where we have only two explanatory variables
+SVMs don't support multi-class classification natively, but there are different approaches that solve this problem. The function LinearSVC from the scikit-learn package implements by default the One-vs-Rest approach that is based on splitting the multi-class dataset into multiple binary classification problems. An hyperplane is constructed for each class and each hyperplane separates the points of a the given class from the points of the remaining classes. The way this hyperplanes are defined is equivalent to the two classes case discussed above. The picture below shows a graphical representation of the hyperplanes in the case where we have only two explanatory variables.
 
 <p align="center"><img src="images/image2.png" width=400></p>
 
@@ -130,7 +130,7 @@ for model in models:
   entries.append((model_name, accuracy))
 
 ```
-The results of the analysis are show below
+The results of the analysis are shown below
 
 | Model  | Accuracy |
 | ------------- | ------------- |
