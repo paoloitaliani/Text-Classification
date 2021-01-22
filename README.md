@@ -298,10 +298,10 @@ The only difference from the previous model is the fact that I added the LSTM "l
 
 | Set | loss  | Accuracy |
 | ------------- | ------------- | ------------- |
-| Training set | 0.0097 | 0.9982 |
-| Test set | 0.0694 | 0.9823 |
+| Training set | 0.0211 | 0.9946 |
+| Test set | 0.0715 | 0.9792 |
 
-As we can see we got the best model so far but at a big expense, the model takes a lot more time to train with respect to the ones seen until now.
+As we can see we got a slightly better result with respect to the previous model but at a big expense, the model takes a lot more time to train.
 ## 2.3 Pre-trained Word Embeddings
 
 Pretrained Word Embeddings are the embeddings learned in one task that are used for solving another similar task that in this case it is classifying documents. 
@@ -340,4 +340,4 @@ Unfortunatly providing a smart initialization of our model didn't helped with im
 
 ## Conclusions
 
-We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes. The best result is given by the addition of the LSTM layer to our neural network, but the slightly advantage in terms of accuracy comes at the cost of its computational expensiveness. 
+We managed to build computationally inexpensive models that are able to produce very accurate classifications. It interesting how we can solve such a complicated problem in just few minutes. The complex and sophisticated LSTM model wasn't able to beat the simple SVM model.
