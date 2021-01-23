@@ -170,7 +170,7 @@ X_train, X_test, y_train, y_test = train_test_split(df['text'], Y,test_size=0.33
 
 ```
 
-The Embedding layer is the first layer of our neural network and requires integer coded data as input, so each word has to be represented as an integer. For this analysis we want to consider just the 10000 most frequent words in our corpus, so we set num_words=10000
+The Embedding layer is the first layer of our neural network and requires integer coded data as input, so each word has to be represented as an integer. For this analysis we want to consider just the 10000 most frequent words in our corpus, so we set num_words=10000.
 
 ```python
 MAX_NB_WORDS=10000 #number of words cnsidered in tokenizer.texts_to_sequences
@@ -250,7 +250,7 @@ Below it is shown the output from the output layer for a given document.
 array([[0.9372179 , 0.00156908, 0.03411338, 0.00319328, 0.00143703,
         0.00519146, 0.0081101 , 0.00261615, 0.00655169]], dtype=float32)
 ```
-As we can see the first element of the vector has the highest value, so the document is going to be classified to the first class. 
+As we can see the first element of the vector has the highest value, so the document is going to be classified to the first class. The confidence level is also very high so we are making a reliable prediction.
 
 ```python
 >>> y_test[45:46]
