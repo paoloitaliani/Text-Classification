@@ -274,8 +274,8 @@ We can improve the previous model by trying to add context to word vectors and t
 <p align="center"><img src="images/image8.png" width=600></p>
 
 
--	Forget gate: controls which information to discard from the cell state
--	Input gate: decides which values we’ll update and creates a vector of new candidate values, this is creates an update of the cell state
+-	Forget gate: controls which information to discard from the cell state.
+-	Input gate: decides which values we’ll update and creates a vector of new candidate values, this is creates an update of the cell state.
 -	Output gate: decides what we’re going to output based on a filtered version of the cell state.
 Now that we have defined the LSTM architecture we can implement it in our model. An important parameter that we have to specify is the number of modules in each LSTM cell, in this case I opted for 100. To better understand what I am talking about I find the following picture useful, where each circle represents a module as defined before. 
 
